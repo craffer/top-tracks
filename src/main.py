@@ -4,26 +4,17 @@ import spotipy
 BEATLES_ID = "3WrFJ7ztbogyGnTHbHJFl2"
 
 
-def get_artist_albums_ids(sp, artist_id):
-    album_ids = []
-    current_result = sp.artist_albums(artist_id, album_type="album")
-    while current_result:
-        album_ids.append([album["id"] for album in current_result["items"]])
-        current_result = sp.next(current_result)
-    current_result = sp.artist_albums(artist_id, album_type="single")
-    while current_result:
-        album_ids.append([album["id"] for album in current_result["items"]])
-        current_result = sp.next(current_result)
-    return album_ids
-
-
 def main():
     """Run a script to get an artist's most popular songs."""
     # authenticate client
     client_credentials_manager = spotipy.oauth2.SpotifyClientCredentials()
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-    album_ids = get_artist_albums_ids(sp, BEATLES_ID)
+    album_ids = []
+    current_result = sp.artist_albums(BEATLES_ID)
+    while current_result:
+        album_ids.append([album["id"] for album in current_result["items"]])
+        current_result = sp.next(current_result)
 
     # get the track list for each album
     track_ids = []
