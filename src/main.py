@@ -35,21 +35,15 @@ def main():
                 if BEATLES_ID in [artist["id"] for artist in track["artists"]]:
                     track_ids.append(track["id"])
 
-    track_popularity = {}
+    track_info = []
     track_id_groups = [track_ids[i : i + 50] for i in range(0, len(track_ids), 50)]
     for id_group in track_id_groups:
-        tracks = sp.tracks(id_group)
-        for track in tracks["tracks"]:
-            track_popularity[track["name"]] = track["popularity"]
+        tracks_resp = sp.tracks(id_group)
+        track_info.extend(tracks_resp["tracks"])
 
-    sorted_tracks = {
-        k: v
-        for k, v in sorted(
-            track_popularity.items(), key=lambda item: item[1], reverse=True
-        )
-    }
-    for track, popularity in sorted_tracks.items():
-        print(track, popularity)
+    sorted_tracks = sorted(track_info, key=lambda k: k["popularity"], reverse=True)
+    for index, track in zip(range(100), sorted_tracks):
+        print(f"{index + 1}. {track['name']}: {track['popularity']}")
 
 
 if __name__ == "__main__":
