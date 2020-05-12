@@ -1,5 +1,6 @@
 """Run a script to get an artist's most popular songs."""
 import spotipy
+import sys
 
 BON_IVER_ID = "4LEiUm1SRbFMgfqnQTwUbQ"
 
@@ -34,6 +35,22 @@ def main():
             for track in album["tracks"]["items"]:
                 if BON_IVER_ID in [artist["id"] for artist in track["artists"]]:
                     track_ids.append(track["id"])
+
+    track_popularity = {}
+    track_id_groups = [track_ids[i : i + 50] for i in range(0, len(track_ids), 50)]
+    for id_group in track_id_groups:
+        tracks = sp.tracks(id_group)
+        for track in tracks["tracks"]:
+            track_popularity[track["name"]] = track["popularity"]
+
+    sorted_tracks = {
+        k: v
+        for k, v in sorted(
+            track_popularity.items(), key=lambda item: item[1], reverse=True
+        )
+    }
+    for track, popularity in sorted_tracks.items():
+        print(track, popularity)
 
 
 if __name__ == "__main__":
