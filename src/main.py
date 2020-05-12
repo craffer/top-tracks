@@ -1,8 +1,7 @@
 """Run a script to get an artist's most popular songs."""
 import spotipy
-import sys
 
-BON_IVER_ID = "4LEiUm1SRbFMgfqnQTwUbQ"
+BEATLES_ID = "3WrFJ7ztbogyGnTHbHJFl2"
 
 
 def get_artist_albums_ids(sp, artist_id):
@@ -24,7 +23,7 @@ def main():
     client_credentials_manager = spotipy.oauth2.SpotifyClientCredentials()
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-    album_ids = get_artist_albums_ids(sp, BON_IVER_ID)
+    album_ids = get_artist_albums_ids(sp, BEATLES_ID)
 
     # get the track list for each album
     track_ids = []
@@ -33,7 +32,7 @@ def main():
         albums = sp.albums(id_group)["albums"]
         for album in albums:
             for track in album["tracks"]["items"]:
-                if BON_IVER_ID in [artist["id"] for artist in track["artists"]]:
+                if BEATLES_ID in [artist["id"] for artist in track["artists"]]:
                     track_ids.append(track["id"])
 
     track_popularity = {}
