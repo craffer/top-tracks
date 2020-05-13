@@ -10,7 +10,7 @@ export default class Tracks extends React.Component {
     this.props.tracks.forEach((track, index) => {
       resultsDivs.push(
         <li
-          key={track.name}
+          key={track.spotify_id}
           className="list-group-item d-flex align-items-center"
         >
           <img className="album-art mr-3" src={track.album.images[1].url} />
@@ -26,7 +26,7 @@ export default class Tracks extends React.Component {
                 return (
                   <a
                     className="text-muted"
-                    key={res.name}
+                    key={res.spotify_id}
                     href={res.external_url}
                   >
                     {res.name}

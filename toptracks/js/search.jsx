@@ -46,7 +46,7 @@ export default class Search extends React.Component {
           {this.state.results.map((result) => {
             return (
               <SearchResult
-                key={result.name}
+                key={result.spotify_id}
                 artist={result}
                 updateArtist={this.props.updateArtist}
               />
