@@ -1,6 +1,7 @@
 import React from "react";
 import Tracks from "./tracks";
 import Search from "./search";
+import Loader from "./loader";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -10,10 +11,19 @@ export default class App extends React.Component {
       artist: "The Beatles",
       artistId: "3WrFJ7ztbogyGnTHbHJFl2",
       tracks: [],
+      loading: false,
     };
 
     this.updateTracks = this.updateTracks.bind(this);
     this.updateArtist = this.updateArtist.bind(this);
+    this.setLoading = this.setLoading.bind(this);
+  }
+
+  setLoading(bool) {
+    console.log("loading set", bool);
+    this.setState({
+      loading: bool,
+    });
   }
 
   updateArtist(newArtist) {
@@ -35,8 +45,10 @@ export default class App extends React.Component {
         <Search
           updateArtist={this.updateArtist}
           updateTracks={this.updateTracks}
+          setLoading={this.setLoading}
         />
         <Tracks tracks={this.state.tracks} />
+        <Loader visible={this.state.loading} />
       </div>
     );
   }

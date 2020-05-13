@@ -9,6 +9,7 @@ export default class SearchResult extends React.Component {
 
   handleClick() {
     this.props.updateArtist(this.props.artist);
+    this.props.setLoading(true);
     const url = "api/v1/tracks";
     fetch(url, {
       method: "POST",
@@ -23,6 +24,7 @@ export default class SearchResult extends React.Component {
       })
       .then((data) => {
         this.props.updateTracks(data.tracks);
+        this.props.setLoading(false);
       })
       .catch((error) => console.log(error));
     this.props.clearArtistSearch();
