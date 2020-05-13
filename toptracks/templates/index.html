@@ -22,8 +22,11 @@
 <body>
     <div class="container-fluid">
         <h1>Top Tracks</h1>
-        <div id="reactEntry"></div>
+        <div id="reactEntry">Loading...</div>
     </div>
+
+    <!-- Load our React code -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>
 </body>
 
 </html>
