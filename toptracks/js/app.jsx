@@ -14,6 +14,14 @@ export default class App extends React.Component {
     };
 
     this.updateTracks = this.updateTracks.bind(this);
+    this.updateArtist = this.updateArtist.bind(this);
+  }
+
+  updateArtist(newArtist) {
+    this.setState({
+      artist: newArtist.name,
+      artistId: newArtist.spotify_id,
+    });
   }
 
   updateTracks(newTracks) {
@@ -25,7 +33,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Search />
+        <Search updateArtist={this.updateArtist} />
         <Submit
           artistId={this.state.artistId}
           updateTracks={this.updateTracks}

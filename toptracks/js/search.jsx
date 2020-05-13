@@ -47,8 +47,8 @@ export default class Search extends React.Component {
             return (
               <SearchResult
                 key={result.name}
-                name={result.name}
-                image={result.images.length > 0 ? result.images[0].url : ""}
+                artist={result}
+                updateArtist={this.props.updateArtist}
               />
             );
           })}
@@ -61,14 +61,30 @@ export default class Search extends React.Component {
 class SearchResult extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.props.updateArtist(this.props.artist);
   }
 
   render() {
     return (
-      <li className="list-group-item d-flex align-items-center">
-        <img className="album-art mr-3" src={this.props.image} />
-        <h4>{this.props.name}</h4>
-      </li>
+      <a
+        className="list-group-item list-group-item-action d-flex align-items-center"
+        onClick={this.handleClick}
+      >
+        <img
+          className="album-art mr-3"
+          src={
+            this.props.artist.images.length > 0
+              ? this.props.artist.images[0].url
+              : ""
+          }
+        />
+        <h4>{this.props.artist.name}</h4>
+      </a>
     );
   }
 }
