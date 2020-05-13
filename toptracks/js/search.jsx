@@ -32,6 +32,7 @@ export default class Search extends React.Component {
     return (
       <div>
         <input
+          className="rounded border col-md-8 offset-md-2 searchbar w-100 p-2"
           type="text"
           placeholder="Search for an artist"
           value={this.state.query}
