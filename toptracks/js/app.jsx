@@ -1,6 +1,7 @@
 import React from "react";
 import Results from "./results";
 import Submit from "./submit";
+import Search from "./search";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
+        <Search />
         <Submit
           artistId={this.state.artistId}
           updateResults={this.updateResults}
