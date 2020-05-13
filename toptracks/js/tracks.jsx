@@ -22,14 +22,19 @@ export default class Tracks extends React.Component {
               </a>
             </h4>
             <p className="text-muted mb-0">
-              {track.artists.map((res) => {
+              {track.artists.map((res, index, arr) => {
+                // for the last element, we don't want a comma and space after
+                let nameDisplay = res.name;
+                if (arr.length - 1 !== index) {
+                  nameDisplay += ", ";
+                }
                 return (
                   <a
                     className="text-muted"
                     key={res.spotify_id}
                     href={res.external_url}
                   >
-                    {res.name}
+                    {nameDisplay}
                   </a>
                 );
               })}{" "}
