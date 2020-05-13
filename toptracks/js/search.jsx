@@ -1,4 +1,5 @@
 import React from "react";
+import SearchResult from "./searchresult";
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -63,42 +64,12 @@ export default class Search extends React.Component {
                 key={result.spotify_id}
                 artist={result}
                 updateArtist={this.props.updateArtist}
+                updateTracks={this.props.updateTracks}
               />
             );
           })}
         </ul>
       </div>
-    );
-  }
-}
-
-class SearchResult extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.props.updateArtist(this.props.artist);
-  }
-
-  render() {
-    return (
-      <a
-        className="list-group-item list-group-item-action d-flex align-items-center"
-        onClick={this.handleClick}
-      >
-        <img
-          className="album-art mr-3"
-          src={
-            this.props.artist.images.length > 0
-              ? this.props.artist.images[0].url
-              : ""
-          }
-        />
-        <h4>{this.props.artist.name}</h4>
-      </a>
     );
   }
 }

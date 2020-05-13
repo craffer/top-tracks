@@ -1,6 +1,5 @@
 import React from "react";
 import Tracks from "./tracks";
-import Submit from "./submit";
 import Search from "./search";
 
 export default class App extends React.Component {
@@ -33,9 +32,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Search updateArtist={this.updateArtist} />
-        <Submit
-          artistId={this.state.artistId}
+        <Search
+          updateArtist={this.updateArtist}
           updateTracks={this.updateTracks}
         />
         <Tracks tracks={this.state.tracks} />
