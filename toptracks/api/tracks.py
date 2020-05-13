@@ -48,6 +48,33 @@ def get_tracks():
 
         # sort our list of tracks' info by the popularity ranking
         sorted_tracks = sorted(track_info, key=lambda k: k["popularity"], reverse=True)
-        response["tracks"] = sorted_tracks[:100]
+
+        # we want to return a dictionary with one key, tracks, with a list of track info
+        response["tracks"] = []
+        for track in sorted_tracks[:100]:
+            track_resp = {}
+
+            track_resp["album"] = {}
+            track_resp["album"]["external_url"] = track["album"]["external_urls"][
+                "spotify"
+            ]
+            track_resp["album"]["spotify_id"] = track["album"]["id"]
+            track_resp["album"]["images"] = track["album"]["images"]
+            track_resp["album"]["name"] = track["album"]["name"]
+
+            track_resp["artists"] = []
+            for artist in track["artists"]:
+                artist_info = {}
+                artist_info["external_url"] = artist["external_urls"]["spotify"]
+                artist_info["spotify_id"] = artist["id"]
+                artist_info["name"] = artist["name"]
+                track_resp["artists"].append(artist_info)
+
+            track_resp["external_url"] = track["external_urls"]["spotify"]
+            track_resp["spotify_id"] = track["id"]
+            track_resp["name"] = track["name"]
+            track_resp["popularity"] = track["popularity"]
+
+            response["tracks"].append(track_resp)
 
     return flask.jsonify(**response)
