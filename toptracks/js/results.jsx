@@ -7,24 +7,28 @@ export default class Results extends React.Component {
 
   render() {
     let resultsDivs = [];
-    this.props.results.forEach((result) => {
-      console.log(result);
+    this.props.results.forEach((result, index) => {
       resultsDivs.push(
-        <div>
-          <img src={result.album.images[0].url} />
+        <li className="list-group-item d-flex align-items-center">
+          <img className="album-art mr-3" src={result.album.images[1].url} />
           <div>
-            <p>{result.name}</p>
-            <small>{result.album.name}</small>
-            <p>
-              {result.artists.forEach((artist) => {
-                return artist.name;
+            <h5 className="mb-0">
+              {index + 1}. {result.name}
+            </h5>
+            <small className="text-muted">
+              {result.artists.map((res) => {
+                console.log(res);
+                return <div key={res.name}>{res.name}</div>;
               })}
-            </p>
-            <p>{result.popularity}</p>
+            </small>
+            <p className="mb-1 text-muted">{result.album.name}</p>
           </div>
-        </div>
+          <div className="ml-auto">
+            <h2>{result.popularity}</h2>
+          </div>
+        </li>
       );
     });
-    return <div>{resultsDivs}</div>;
+    return <ul className="list-group">{resultsDivs}</ul>;
   }
 }
