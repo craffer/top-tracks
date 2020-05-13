@@ -16,12 +16,23 @@ export default class Results extends React.Component {
           <img className="album-art mr-3" src={result.album.images[1].url} />
           <h1 className="mr-3">{index + 1}.</h1>
           <div>
-            <h4>{result.name}</h4>
+            <h4>
+              <a className="text-dark" href={result.external_url}>
+                {result.name}
+              </a>
+            </h4>
             <p className="text-muted mb-0">
               {result.artists.map((res) => {
-                return res.name;
+                return (
+                  <a className="text-muted" href={res.external_url}>
+                    {res.name}
+                  </a>
+                );
               })}{" "}
-              – {result.album.name}
+              –{" "}
+              <a className="text-muted" href={result.album.external_url}>
+                {result.album.name}
+              </a>
             </p>
           </div>
           <div className="ml-auto">
