@@ -24,7 +24,11 @@ export default class Results extends React.Component {
             <p className="text-muted mb-0">
               {result.artists.map((res) => {
                 return (
-                  <a className="text-muted" href={res.external_url}>
+                  <a
+                    className="text-muted"
+                    key={res.name}
+                    href={res.external_url}
+                  >
                     {res.name}
                   </a>
                 );
