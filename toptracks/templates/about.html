@@ -19,7 +19,7 @@
     <title>Top Tracks</title>
 </head>
 
-<body class="bg-light">
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
         <a class="navbar-brand" href="{{ url_for('show_index') }}">Top Tracks</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -44,14 +44,4 @@
             </ul>
         </div>
     </nav>
-    <div class="container-fluid">
-        <div class="col-md-10 offset-md-1">
-            <div id="reactEntry"></div>
-        </div>
-    </div>
-
-    <!-- Load our React code -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>
-</body>
-
-</html>
+</body
