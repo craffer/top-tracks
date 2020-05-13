@@ -1,6 +1,7 @@
 import React from "react";
-import Results from "./results";
+import Tracks from "./tracks";
 import Submit from "./submit";
+import Search from "./search";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -9,26 +10,35 @@ export default class App extends React.Component {
     this.state = {
       artist: "The Beatles",
       artistId: "3WrFJ7ztbogyGnTHbHJFl2",
-      results: [],
+      tracks: [],
     };
 
-    this.updateResults = this.updateResults.bind(this);
+    this.updateTracks = this.updateTracks.bind(this);
+    this.updateArtist = this.updateArtist.bind(this);
   }
 
-  updateResults(newTracks) {
+  updateArtist(newArtist) {
     this.setState({
-      results: newTracks,
+      artist: newArtist.name,
+      artistId: newArtist.spotify_id,
+    });
+  }
+
+  updateTracks(newTracks) {
+    this.setState({
+      tracks: newTracks,
     });
   }
 
   render() {
     return (
       <div>
+        <Search updateArtist={this.updateArtist} />
         <Submit
           artistId={this.state.artistId}
-          updateResults={this.updateResults}
+          updateTracks={this.updateTracks}
         />
-        <Results results={this.state.results} />
+        <Tracks tracks={this.state.tracks} />
       </div>
     );
   }
