@@ -1,6 +1,7 @@
 """Package initializer for toptrack's Flask backend."""
 import flask
 import os
+import spotipy
 
 # app is a single object used by all the code modules in this package
 app = flask.Flask(__name__)  # pylint: disable=invalid-name
@@ -12,6 +13,10 @@ app.config.from_object("toptracks.config")
 # useful for using different on development and production machines.
 # Reference: http://flask.pocoo.org/docs/0.12/config/
 app.config.from_envvar("FLASK_SETTINGS", silent=True)
+
+# authenticate with Spotify
+client_credentials_manager = spotipy.oauth2.SpotifyClientCredentials()
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 # tell our app about our API and views files
 import toptracks.api  # noqa: E402  pylint: disable=wrong-import-position
