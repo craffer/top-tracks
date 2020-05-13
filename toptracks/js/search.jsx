@@ -42,7 +42,7 @@ export default class Search extends React.Component {
       <div className="mt-5">
         <div className="input-group col-md-8 offset-md-2">
           <input
-            className="form-control searchbar p-2 bg-light"
+            className="form-control searchbar p-2"
             type="text"
             placeholder="Search for an artist"
             value={this.state.query}
