@@ -25,6 +25,7 @@ export default class SearchResult extends React.Component {
         this.props.updateTracks(data.tracks);
       })
       .catch((error) => console.log(error));
+    this.props.clearArtistSearch();
   }
 
   render() {

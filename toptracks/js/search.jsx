@@ -11,6 +11,7 @@ export default class Search extends React.Component {
     };
 
     this.search = this.search.bind(this);
+    this.clearResults = this.clearResults.bind(this);
   }
 
   search() {
@@ -27,6 +28,12 @@ export default class Search extends React.Component {
         });
       })
       .catch((error) => console.log(error));
+  }
+
+  clearResults() {
+    this.setState({
+      results: [],
+    });
   }
 
   render() {
@@ -57,18 +64,26 @@ export default class Search extends React.Component {
             </button>
           </div>
         </div>
-        <ul className="list-group">
-          {this.state.results.map((result) => {
-            return (
-              <SearchResult
-                key={result.spotify_id}
-                artist={result}
-                updateArtist={this.props.updateArtist}
-                updateTracks={this.props.updateTracks}
-              />
-            );
-          })}
-        </ul>
+        <div className="mt-4">
+          <h5>
+            {this.state.results.length > 0
+              ? "Click on an artist to see their top songs:"
+              : ""}
+          </h5>
+          <ul className="list-group">
+            {this.state.results.map((result) => {
+              return (
+                <SearchResult
+                  key={result.spotify_id}
+                  artist={result}
+                  updateArtist={this.props.updateArtist}
+                  updateTracks={this.props.updateTracks}
+                  clearArtistSearch={this.clearResults}
+                />
+              );
+            })}
+          </ul>
+        </div>
       </div>
     );
   }
