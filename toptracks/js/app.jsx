@@ -13,12 +13,12 @@ export default class App extends React.Component {
       tracks: [],
     };
 
-    this.updateResults = this.updateResults.bind(this);
+    this.updateTracks = this.updateTracks.bind(this);
   }
 
-  updateResults(newTracks) {
+  updateTracks(newTracks) {
     this.setState({
-      results: newTracks,
+      tracks: newTracks,
     });
   }
 
@@ -28,7 +28,7 @@ export default class App extends React.Component {
         <Search />
         <Submit
           artistId={this.state.artistId}
-          updateResults={this.updateResults}
+          updateTracks={this.updateTracks}
         />
         <Tracks tracks={this.state.tracks} />
       </div>

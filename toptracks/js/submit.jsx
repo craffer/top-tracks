@@ -22,7 +22,7 @@ export default class Submit extends React.Component {
           return response.json();
         })
         .then((data) => {
-          this.props.updateResults(data.tracks);
+          this.props.updateTracks(data.tracks);
         })
         .catch((error) => console.log(error));
     }
