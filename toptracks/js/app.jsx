@@ -1,5 +1,5 @@
 import React from "react";
-import Results from "./results";
+import Tracks from "./tracks";
 import Submit from "./submit";
 import Search from "./search";
 
@@ -10,7 +10,7 @@ export default class App extends React.Component {
     this.state = {
       artist: "The Beatles",
       artistId: "3WrFJ7ztbogyGnTHbHJFl2",
-      results: [],
+      tracks: [],
     };
 
     this.updateResults = this.updateResults.bind(this);
@@ -30,7 +30,7 @@ export default class App extends React.Component {
           artistId={this.state.artistId}
           updateResults={this.updateResults}
         />
-        <Results results={this.state.results} />
+        <Tracks tracks={this.state.tracks} />
       </div>
     );
   }
