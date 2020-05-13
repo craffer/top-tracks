@@ -45,14 +45,17 @@ export default class Search extends React.Component {
             }}
           ></input>
           <div class="input-group-append">
-            <button class="btn btn-secondary" type="button">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              onClick={this.search}
+            >
               <div>
                 <i class="fas fa-search"></i>
               </div>
             </button>
           </div>
         </div>
-
         <ul className="list-group">
           {this.state.results.map((result) => {
             return (
