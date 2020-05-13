@@ -50,6 +50,6 @@ export default class Tracks extends React.Component {
         </li>
       );
     });
-    return <ul className="list-group">{resultsDivs}</ul>;
+    return <ul className="list-group mb-4">{resultsDivs}</ul>;
   }
 }
