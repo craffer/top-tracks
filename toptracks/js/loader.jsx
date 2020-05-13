@@ -8,10 +8,20 @@ export default class Loader extends React.Component {
   render() {
     if (this.props.visible) {
       return (
-        <img
-          src="https://cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif"
-          alt="loading..."
-        />
+        <div class="sk-circle-fade">
+          <div class="sk-circle-fade-dot"></div>
+          <div class="sk-circle-fade-dot"></div>
+          <div class="sk-circle-fade-dot"></div>
+          <div class="sk-circle-fade-dot"></div>
+          <div class="sk-circle-fade-dot"></div>
+          <div class="sk-circle-fade-dot"></div>
+          <div class="sk-circle-fade-dot"></div>
+          <div class="sk-circle-fade-dot"></div>
+          <div class="sk-circle-fade-dot"></div>
+          <div class="sk-circle-fade-dot"></div>
+          <div class="sk-circle-fade-dot"></div>
+          <div class="sk-circle-fade-dot"></div>
+        </div>
       );
     } else {
       return null;
