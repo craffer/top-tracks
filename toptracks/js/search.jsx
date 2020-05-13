@@ -15,6 +15,7 @@ export default class Search extends React.Component {
   }
 
   search() {
+    this.props.updateTracks([]);
     const url = `api/v1/search?q=${encodeURI(this.state.query)}`;
     fetch(url, { credentials: "same-origin" })
       .then((response) => {
