@@ -53,14 +53,14 @@ export default class Search extends React.Component {
               }
             }}
           ></input>
-          <div class="input-group-append">
+          <div className="input-group-append">
             <button
-              class="btn btn-secondary"
+              className="btn btn-secondary"
               type="button"
               onClick={this.search}
             >
               <div>
-                <i class="fas fa-search"></i>
+                <i className="fas fa-search"></i>
               </div>
             </button>
           </div>
