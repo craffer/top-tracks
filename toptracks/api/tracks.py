@@ -48,6 +48,6 @@ def get_tracks():
 
         # sort our list of tracks' info by the popularity ranking
         sorted_tracks = sorted(track_info, key=lambda k: k["popularity"], reverse=True)
-        response["tracks"] = sorted_tracks
+        response["tracks"] = sorted_tracks[:100]
 
     return flask.jsonify(**response)
