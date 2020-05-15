@@ -14,7 +14,10 @@ export default class Tracks extends React.Component {
           className="list-group-item d-flex align-items-center"
         >
           <a href={track.external_url}>
-            <img className="album-art mr-3" src={track.album.images[1].url} />
+            <img
+              className="album-art mr-3 shadow-sm"
+              src={track.album.images[1].url}
+            />
           </a>
           <h1 className="mr-3">{index + 1}.</h1>
           <div>
