@@ -8,20 +8,20 @@ export default class Loader extends React.Component {
   render() {
     if (this.props.visible) {
       return (
-        <div class="w-100 d-flex flex-column align-items-center">
-          <div class="sk-circle-fade">
-            <div class="sk-circle-fade-dot"></div>
-            <div class="sk-circle-fade-dot"></div>
-            <div class="sk-circle-fade-dot"></div>
-            <div class="sk-circle-fade-dot"></div>
-            <div class="sk-circle-fade-dot"></div>
-            <div class="sk-circle-fade-dot"></div>
-            <div class="sk-circle-fade-dot"></div>
-            <div class="sk-circle-fade-dot"></div>
-            <div class="sk-circle-fade-dot"></div>
-            <div class="sk-circle-fade-dot"></div>
-            <div class="sk-circle-fade-dot"></div>
-            <div class="sk-circle-fade-dot"></div>
+        <div className="w-100 d-flex flex-column align-items-center">
+          <div className="sk-circle-fade">
+            <div className="sk-circle-fade-dot"></div>
+            <div className="sk-circle-fade-dot"></div>
+            <div className="sk-circle-fade-dot"></div>
+            <div className="sk-circle-fade-dot"></div>
+            <div className="sk-circle-fade-dot"></div>
+            <div className="sk-circle-fade-dot"></div>
+            <div className="sk-circle-fade-dot"></div>
+            <div className="sk-circle-fade-dot"></div>
+            <div className="sk-circle-fade-dot"></div>
+            <div className="sk-circle-fade-dot"></div>
+            <div className="sk-circle-fade-dot"></div>
+            <div className="sk-circle-fade-dot"></div>
           </div>
         </div>
       );
