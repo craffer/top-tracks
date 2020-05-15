@@ -24,7 +24,6 @@ export default class Search extends React.Component {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         this.setState({
           results: data.artists,
         });

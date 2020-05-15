@@ -37,7 +37,7 @@ export default class SearchResult extends React.Component {
         onClick={this.handleClick}
       >
         <img
-          className="album-art mr-3"
+          className="album-art mr-3 shadow-sm"
           src={
             this.props.artist.images.length > 0
               ? this.props.artist.images[0].url
