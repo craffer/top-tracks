@@ -20,7 +20,6 @@ export default class App extends React.Component {
   }
 
   setLoading(bool) {
-    console.log("loading set", bool);
     this.setState({
       loading: bool,
     });
