@@ -1,7 +1,15 @@
 .album-art {
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     object-fit: cover;
+}
+
+/* all devices except mobile, increase size of image view */
+@media (min-width: 768px) {
+    .album-art {
+        height: 100px;
+        width: 100px;
+    }
 }
 
 i {
