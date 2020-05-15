@@ -15,11 +15,11 @@ export default class Tracks extends React.Component {
         >
           <a href={track.external_url}>
             <img
-              className="album-art mr-3 shadow-sm"
+              className="album-art mr-2 mr-md-3 shadow-sm"
               src={track.album.images[1].url}
             />
           </a>
-          <h1 className="mr-3">{index + 1}.</h1>
+          <h1 className="mr-2 mr-md-3">{index + 1}.</h1>
           <div>
             <h4>
               <a className="text-dark" href={track.external_url}>
