@@ -4,11 +4,19 @@
     object-fit: cover;
 }
 
+.mobile-header {
+    font-size: 2rem;
+}
+
 /* all devices except mobile, increase size of image view */
 @media (min-width: 768px) {
     .album-art {
         height: 100px;
         width: 100px;
+    }
+
+    .mobile-header {
+        font-size: 2.5rem;
     }
 }
 
