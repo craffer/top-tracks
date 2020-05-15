@@ -14,6 +14,10 @@ i {
     line-height: 1.6;
 }
 
+a.list-group-item-action {
+    cursor: pointer;
+}
+
 /* Loading spinner, from https://github.com/tobiasahlin/SpinKit/ */
 /* Config */
 :root {
