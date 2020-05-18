@@ -1,5 +1,5 @@
 import React from "react";
-import SearchResult from "./searchresult";
+import ResultsList from "./resultslist";
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -15,6 +15,7 @@ export default class Search extends React.Component {
   }
 
   search() {
+    this.clearResults();
     this.props.updateTracks([]);
     this.props.setLoading(true);
     const url = `api/v1/search?q=${encodeURI(this.state.query)}`;
@@ -40,47 +41,46 @@ export default class Search extends React.Component {
 
   render() {
     return (
-      <div className="mt-3">
-        <div className="input-group col-md-8 offset-md-2">
-          <input
-            className="form-control searchbar p-2"
-            type="text"
-            placeholder="Search for an artist"
-            value={this.state.query}
-            onChange={(event) => this.setState({ query: event.target.value })}
-            onKeyPress={(event) => {
-              if (event.key === "Enter") {
-                this.search();
-              }
-            }}
-          ></input>
-          <div className="input-group-append">
-            <button
-              className="btn btn-outline-light"
-              type="button"
-              onClick={this.search}
-            >
-              <div>
-                <i className="fas fa-search"></i>
-              </div>
-            </button>
+      <div>
+        <div className="mt-3">
+          <div className="input-group col-md-8 offset-md-2">
+            <input
+              className="form-control searchbar p-2"
+              type="text"
+              placeholder="Search for an artist"
+              value={this.state.query}
+              onChange={(event) => this.setState({ query: event.target.value })}
+              onKeyPress={(event) => {
+                if (event.key === "Enter") {
+                  this.search();
+                }
+              }}
+            ></input>
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-light"
+                type="button"
+                onClick={this.search}
+              >
+                <div>
+                  <i className="fas fa-search"></i>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
         <div className="mt-4">
-          <ul className="list-group">
-            {this.state.results.map((result) => {
-              return (
-                <SearchResult
-                  key={result.spotify_id}
-                  artist={result}
-                  updateArtist={this.props.updateArtist}
-                  updateTracks={this.props.updateTracks}
-                  clearArtistSearch={this.clearResults}
-                  setLoading={this.props.setLoading}
-                />
-              );
-            })}
-          </ul>
+          <div>
+            {this.state.results.length > 0 && (
+              <ResultsList
+                results={this.state.results}
+                updateArtist={this.props.updateArtist}
+                updateTracks={this.props.updateTracks}
+                clearResults={this.clearResults}
+                setLoading={this.props.setLoading}
+              />
+            )}
+          </div>
         </div>
       </div>
     );

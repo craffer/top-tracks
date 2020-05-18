@@ -9,9 +9,10 @@ def search(search_term=""):
     """Query Spotify for an artist."""
     context = {}
     user_query = f'"{search_term}"' if search_term else flask.request.args.get("q")
-    resp = toptracks.sp.search(user_query, type="artist")
+    if not user_query:
+        return flask.jsonify(**context), 404
 
-    print(resp["artists"]["items"])
+    resp = toptracks.sp.search(user_query, type="artist")
 
     context["artists"] = []
     for artist in resp["artists"]["items"]:
@@ -20,7 +21,13 @@ def search(search_term=""):
         info["spotify_id"] = artist["id"]
         info["images"] = artist["images"]
         info["name"] = artist["name"]
+        info["popularity"] = artist["popularity"]
 
         context["artists"].append(info)
+
+    # sort our artist dictionary by popularity before returning
+    context["artists"] = sorted(
+        context["artists"], key=lambda k: k["popularity"], reverse=True
+    )
 
     return flask.jsonify(**context)
