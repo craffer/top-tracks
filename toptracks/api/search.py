@@ -25,4 +25,9 @@ def search(search_term=""):
 
         context["artists"].append(info)
 
+    # sort our artist dictionary by popularity before returning
+    context["artists"] = sorted(
+        context["artists"], key=lambda k: k["popularity"], reverse=True
+    )
+
     return flask.jsonify(**context)
