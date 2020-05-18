@@ -8,10 +8,12 @@ export default class Search extends React.Component {
     this.state = {
       query: "",
       results: [],
+      showMore: false,
     };
 
     this.search = this.search.bind(this);
     this.clearResults = this.clearResults.bind(this);
+    this.toggleShow = this.toggleShow.bind(this);
   }
 
   search() {
@@ -35,6 +37,13 @@ export default class Search extends React.Component {
   clearResults() {
     this.setState({
       results: [],
+      showMore: false,
+    });
+  }
+
+  toggleShow(bool) {
+    this.setState({
+      showMore: bool,
     });
   }
 
@@ -69,6 +78,7 @@ export default class Search extends React.Component {
         <div className="mt-4">
           <ul className="list-group">
             {this.state.results.map((result) => {
+                if (result.popularity > 20) {
               return (
                 <SearchResult
                   key={result.spotify_id}
@@ -79,10 +89,27 @@ export default class Search extends React.Component {
                   setLoading={this.props.setLoading}
                 />
               );
+                }
             })}
           </ul>
+            <ShowResults toggleShow={this.toggleShow} more={this.showMore} />
         </div>
       </div>
+class ShowResults extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <button
+        className="btn btn-link text-white"
+        onClick={() => {
+          this.props.toggleShow(!this.props.more);
+        }}
+      >
+        Show {this.props.more ? "fewer" : "more"} results
+      </button>
     );
   }
 }
