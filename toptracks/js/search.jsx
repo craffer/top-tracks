@@ -41,10 +41,11 @@ export default class Search extends React.Component {
     });
   }
 
-  toggleShow(bool) {
-    this.setState({
-      showMore: bool,
-    });
+  toggleShow() {
+    this.setState((prevState) => ({
+      showMore: !prevState.showMore,
+    }));
+    console.log("showMore is", this.state.showMore);
   }
 
   render() {
@@ -78,23 +79,30 @@ export default class Search extends React.Component {
         <div className="mt-4">
           <ul className="list-group">
             {this.state.results.map((result) => {
-                if (result.popularity > 20) {
-              return (
-                <SearchResult
-                  key={result.spotify_id}
-                  artist={result}
-                  updateArtist={this.props.updateArtist}
-                  updateTracks={this.props.updateTracks}
-                  clearArtistSearch={this.clearResults}
-                  setLoading={this.props.setLoading}
-                />
-              );
-                }
+              if (result.popularity > 20) {
+                return (
+                  <SearchResult
+                    key={result.spotify_id}
+                    artist={result}
+                    updateArtist={this.props.updateArtist}
+                    updateTracks={this.props.updateTracks}
+                    clearArtistSearch={this.clearResults}
+                    setLoading={this.props.setLoading}
+                  />
+                );
+              }
             })}
           </ul>
-            <ShowResults toggleShow={this.toggleShow} more={this.showMore} />
+          <ShowResults
+            toggleShow={this.toggleShow}
+            more={this.state.showMore}
+          />
         </div>
       </div>
+    );
+  }
+}
+
 class ShowResults extends React.Component {
   constructor(props) {
     super(props);
@@ -104,9 +112,7 @@ class ShowResults extends React.Component {
     return (
       <button
         className="btn btn-link text-white"
-        onClick={() => {
-          this.props.toggleShow(!this.props.more);
-        }}
+        onClick={this.props.toggleShow}
       >
         Show {this.props.more ? "fewer" : "more"} results
       </button>
