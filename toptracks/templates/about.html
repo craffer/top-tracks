@@ -44,4 +44,32 @@
             </ul>
         </div>
     </nav>
+    <div class="container-fluid about">
+        <div class="row my-3 h-100">
+            <div class="col-md-8 offset-md-2 text-white d-flex flex-column h-100">
+                <div>
+                    <h3 class="pt-2">What is this site?</h3>
+                    <p>This site was built out to help settle an argument about just how many Beatles songs <em>everyone</em> would recognize. While Spotify only shows you the top five most popular songs from an artist (or top 10 on a computer), I wanted to see a more complete ranking of artist's songs, and this site was born. Now you can search for any artist that's on Spotify and see a ranking of their songs by popularity.</p>
+                </div>
+                <div>
+                    <h4>How does it work?</h4>
+                    <p>The website uses the (really great) <a class="text-success" href="https://developer.spotify.com/documentation/web-api/">Spotify API</a> to process your artist search and to get information about their songs. If you're interested in learning more, you can check out the code for the site on <a class="text-success" href="https://github.com/craffer/top-tracks">GitHub</a>.
+                    </p>
+                </div>
+                <div>
+                    <h4>What is a "popularity score"?</h4>
+                    <p>There's no way for a website to access the number of plays a song has on Spotify – instead, Spotify gives the track's popularity score, which they describe as follows on their website.
+                        <blockquote class="blockquote text-center">
+                            <p class="mb-0">"The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are."</p>
+                          </blockquote>
+                    </p>
+                    <p>In short, the higher the number, the more popular the song, up to 100.</p>
+                </div>
+                <div>
+                    <h5>Acknowledgements</h5>
+                    <p>This website was made by <a class="text-success" href="https://conorrafferty.com">Conor Rafferty</a>, using the Spotify API.
+                </div>
+            </div>
+        </div>
+    </div>
 </body
