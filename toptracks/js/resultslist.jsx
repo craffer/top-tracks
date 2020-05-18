@@ -20,13 +20,13 @@ export default class ResultsList extends React.Component {
 
   render() {
     let needMore = this.props.results.some(
-      (result) => result["popularity"] <= 20
+      (result) => result["popularity"] <= 30
     );
     return (
       <div className="mt-4">
         <ul className="list-group">
           {this.props.results.map((result) => {
-            if (result.popularity > 20 || this.state.showMore) {
+            if (result.popularity > 30 || this.state.showMore) {
               return (
                 <SearchResult
                   key={result.spotify_id}
