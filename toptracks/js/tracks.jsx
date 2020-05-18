@@ -52,7 +52,8 @@ export default class Tracks extends React.Component {
               </a>
             </div>
           </div>
-          <div className="ml-auto">
+          <div className="ml-auto d-flex flex-column align-items-center">
+            <small>Score:</small>
             <h2 className="score">{track.popularity}</h2>
           </div>
         </li>
