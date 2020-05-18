@@ -13,7 +13,7 @@ export default class Tracks extends React.Component {
           key={track.spotify_id}
           className="list-group-item d-flex align-items-center"
         >
-          <a href={track.external_url}>
+          <a href={track.external_url} target="_blank">
             <img
               className="album-art mr-2 mr-md-3 shadow-sm"
               src={track.album.images[1].url}
@@ -22,7 +22,11 @@ export default class Tracks extends React.Component {
           <h1 className="mr-2 mr-md-3 ranking">{index + 1}.</h1>
           <div>
             <h4 className="song-name mb-0 mb-md-2">
-              <a className="text-dark" href={track.external_url}>
+              <a
+                className="text-dark"
+                href={track.external_url}
+                target="_blank"
+              >
                 {track.name}
               </a>
             </h4>
@@ -36,6 +40,7 @@ export default class Tracks extends React.Component {
                 return (
                   <a
                     className="text-muted album-artist"
+                    target="_blank"
                     key={res.spotify_id}
                     href={res.external_url}
                   >
@@ -47,6 +52,7 @@ export default class Tracks extends React.Component {
               <a
                 className="text-muted album-artist"
                 href={track.album.external_url}
+                target="_blank"
               >
                 {track.album.name}
               </a>
