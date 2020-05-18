@@ -2,6 +2,19 @@
 
 body {
     font-family: 'Lato', sans-serif;
+    min-height: 100vh;
+    height: 100%;
+    background: rgb(140, 34, 195);
+    background: linear-gradient(rgba(95, 45, 253, 1) 0px, rgba(140, 34, 195, 1) 800px, rgba(130, 24, 185, 1) 100%);
+    background-repeat: repeat-x;
+}
+
+.text-white {
+    color: white;
+}
+
+.navbar {
+    background: transparent;
 }
 
 .album-art {
