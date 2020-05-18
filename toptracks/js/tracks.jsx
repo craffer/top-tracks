@@ -35,7 +35,7 @@ export default class Tracks extends React.Component {
                 }
                 return (
                   <a
-                    className="text-muted"
+                    className="text-muted album-artist"
                     key={res.spotify_id}
                     href={res.external_url}
                   >
@@ -44,7 +44,10 @@ export default class Tracks extends React.Component {
                 );
               })}{" "}
               –{" "}
-              <a className="text-muted" href={track.album.external_url}>
+              <a
+                className="text-muted album-artist"
+                href={track.album.external_url}
+              >
                 {track.album.name}
               </a>
             </div>
