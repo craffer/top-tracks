@@ -67,11 +67,6 @@ export default class Search extends React.Component {
           </div>
         </div>
         <div className="mt-4">
-          <h5>
-            {this.state.results.length > 0
-              ? "Click on an artist to see their top songs:"
-              : ""}
-          </h5>
           <ul className="list-group">
             {this.state.results.map((result) => {
               return (
