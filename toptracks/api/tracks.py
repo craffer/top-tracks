@@ -20,26 +20,20 @@ def get_tracks():
         artist_name = req["artist_name"]
         artist_id = req["artist_id"]
         tracks = []
-        first_page = toptracks.sp.search(
+        current_result = toptracks.sp.search(
             f"artist:{artist_name}", type="track", limit=50
         )
-        if first_page:
+        page_number = 0
+        while current_result and page_number < 4:
             tracks.extend(
                 [
                     x
-                    for x in first_page["tracks"]["items"]
+                    for x in current_result["tracks"]["items"]
                     if artist_id in [artist["id"] for artist in x["artists"]]
                 ]
             )
-            second_page = toptracks.sp.next(first_page["tracks"])
-            if second_page:
-                tracks.extend(
-                    [
-                        x
-                        for x in second_page["tracks"]["items"]
-                        if artist_id in [artist["id"] for artist in x["artists"]]
-                    ]
-                )
+            current_result = toptracks.sp.next(current_result["tracks"])
+            page_number += 1
 
         # sort our list of tracks' info by the popularity ranking
         sorted_tracks = sorted(tracks, key=lambda k: k["popularity"], reverse=True)
