@@ -40,7 +40,7 @@ export default class Search extends React.Component {
 
   render() {
     return (
-      <div className="mt-5">
+      <div className="mt-3">
         <div className="input-group col-md-8 offset-md-2">
           <input
             className="form-control searchbar p-2"
