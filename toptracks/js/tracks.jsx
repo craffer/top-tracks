@@ -15,18 +15,18 @@ export default class Tracks extends React.Component {
         >
           <a href={track.external_url}>
             <img
-              className="album-art mr-3 shadow-sm"
+              className="album-art mr-2 mr-md-3 shadow-sm"
               src={track.album.images[1].url}
             />
           </a>
-          <h1 className="mr-3">{index + 1}.</h1>
+          <h1 className="mr-2 mr-md-3 mobile-header">{index + 1}.</h1>
           <div>
-            <h4>
+            <h4 className="song-name">
               <a className="text-dark" href={track.external_url}>
                 {track.name}
               </a>
             </h4>
-            <p className="text-muted mb-0">
+            <div className="text-muted">
               {track.artists.map((res, index, arr) => {
                 // for the last element, we don't want a comma and space after
                 let nameDisplay = res.name;
@@ -47,7 +47,7 @@ export default class Tracks extends React.Component {
               <a className="text-muted" href={track.album.external_url}>
                 {track.album.name}
               </a>
-            </p>
+            </div>
           </div>
           <div className="ml-auto">
             <h2>{track.popularity}</h2>
