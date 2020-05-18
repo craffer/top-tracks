@@ -16,7 +16,7 @@ export default class SearchResult extends React.Component {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ artist_id: this.props.artist.spotify_id }),
+      body: JSON.stringify({ artist_id: this.props.artist.name }),
     })
       .then((response) => {
         if (!response.ok) throw Error(response.statusText);
