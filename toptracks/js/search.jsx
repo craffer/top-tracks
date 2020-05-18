@@ -8,12 +8,10 @@ export default class Search extends React.Component {
     this.state = {
       query: "",
       results: [],
-      showMore: false,
     };
 
     this.search = this.search.bind(this);
     this.clearResults = this.clearResults.bind(this);
-    this.toggleShow = this.toggleShow.bind(this);
   }
 
   search() {
@@ -38,8 +36,66 @@ export default class Search extends React.Component {
   clearResults() {
     this.setState({
       results: [],
-      showMore: false,
     });
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="mt-3">
+          <div className="input-group col-md-8 offset-md-2">
+            <input
+              className="form-control searchbar p-2"
+              type="text"
+              placeholder="Search for an artist"
+              value={this.state.query}
+              onChange={(event) => this.setState({ query: event.target.value })}
+              onKeyPress={(event) => {
+                if (event.key === "Enter") {
+                  this.search();
+                }
+              }}
+            ></input>
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-light"
+                type="button"
+                onClick={this.search}
+              >
+                <div>
+                  <i className="fas fa-search"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="mt-4">
+          <div>
+            {this.state.results.length > 0 && (
+              <Results
+                resultsList={this.state.results}
+                updateArtist={this.props.updateArtist}
+                updateTracks={this.props.updateTracks}
+                clearResults={this.clearResults}
+                setLoading={this.props.setLoading}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+class Results extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showMore: false,
+    };
+
+    this.toggleShow = this.toggleShow.bind(this);
   }
 
   toggleShow() {
@@ -49,72 +105,33 @@ export default class Search extends React.Component {
   }
 
   render() {
+    let needMore = this.props.resultsList.some(
+      (result) => result["popularity"] <= 20
+    );
     return (
-      <div className="mt-3">
-        <div className="input-group col-md-8 offset-md-2">
-          <input
-            className="form-control searchbar p-2"
-            type="text"
-            placeholder="Search for an artist"
-            value={this.state.query}
-            onChange={(event) => this.setState({ query: event.target.value })}
-            onKeyPress={(event) => {
-              if (event.key === "Enter") {
-                this.search();
-              }
-            }}
-          ></input>
-          <div className="input-group-append">
-            <button
-              className="btn btn-outline-light"
-              type="button"
-              onClick={this.search}
-            >
-              <div>
-                <i className="fas fa-search"></i>
-              </div>
-            </button>
-          </div>
-        </div>
-        <div className="mt-4">
-          <ul className="list-group">
-            {this.state.results.map((result) => {
-              if (result.popularity > 20) {
-                return (
-                  <SearchResult
-                    key={result.spotify_id}
-                    artist={result}
-                    updateArtist={this.props.updateArtist}
-                    updateTracks={this.props.updateTracks}
-                    clearArtistSearch={this.clearResults}
-                    setLoading={this.props.setLoading}
-                  />
-                );
-              }
-            })}
-          </ul>
+      <div className="mt-4">
+        <ul className="list-group">
+          {this.props.resultsList.map((result) => {
+            if (result.popularity > 20 || this.state.showMore) {
+              return (
+                <SearchResult
+                  key={result.spotify_id}
+                  artist={result}
+                  updateArtist={this.props.updateArtist}
+                  updateTracks={this.props.updateTracks}
+                  clearArtistSearch={this.props.clearResults}
+                  setLoading={this.props.setLoading}
+                />
+              );
+            }
+          })}
+        </ul>
+        {needMore && (
           <ShowResults
             toggleShow={this.toggleShow}
             more={this.state.showMore}
           />
-          <ul className="list-group">
-            {this.state.showMore &&
-              this.state.results.map((result) => {
-                if (result.popularity <= 20) {
-                  return (
-                    <SearchResult
-                      key={result.spotify_id}
-                      artist={result}
-                      updateArtist={this.props.updateArtist}
-                      updateTracks={this.props.updateTracks}
-                      clearArtistSearch={this.clearResults}
-                      setLoading={this.props.setLoading}
-                    />
-                  );
-                }
-              })}
-          </ul>
-        </div>
+        )}
       </div>
     );
   }
