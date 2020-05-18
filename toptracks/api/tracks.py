@@ -12,14 +12,17 @@ def get_tracks():
     if flask.request.method == "POST":
         # retrieve the artist ID from the post request
         req = flask.request.get_json()
-        if "artist_id" not in req:
+        if "artist_id" not in req or "artist_name" not in req:
             response["status"] = 400
-            response["error"] = "Malformed request, no artist_id"
+            response["error"] = "Malformed request"
             return response, 400
 
-        artist = req["artist_id"]
+        artist_name = req["artist_name"]
+        artist_id = req["artist_id"]
         tracks = []
-        current_result = toptracks.sp.search(f"artist:{artist}", type="track", limit=50)
+        current_result = toptracks.sp.search(
+            f"artist:{artist_name}", type="track", limit=50
+        )
         if current_result:
             tracks.extend(current_result["tracks"]["items"])
             current_result = toptracks.sp.next(current_result["tracks"])
