@@ -8,7 +8,7 @@ import spotipy
 def search(search_term=""):
     """Query Spotify for an artist."""
     context = {}
-    user_query = search_term if search_term else flask.request.args.get("q")
+    user_query = f'"{search_term}"' if search_term else flask.request.args.get("q")
     resp = toptracks.sp.search(user_query, type="artist")
 
     print(resp["artists"]["items"])
