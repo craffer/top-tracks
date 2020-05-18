@@ -21,7 +21,7 @@ export default class Tracks extends React.Component {
           </a>
           <h1 className="mr-2 mr-md-3 mobile-header">{index + 1}.</h1>
           <div>
-            <h4 className="song-name">
+            <h4 className="song-name mb-0 mb-md-2">
               <a className="text-dark" href={track.external_url}>
                 {track.name}
               </a>
