@@ -17,6 +17,7 @@ export default class Search extends React.Component {
   }
 
   search() {
+    this.clearResults();
     this.props.updateTracks([]);
     this.props.setLoading(true);
     const url = `api/v1/search?q=${encodeURI(this.state.query)}`;
@@ -45,7 +46,6 @@ export default class Search extends React.Component {
     this.setState((prevState) => ({
       showMore: !prevState.showMore,
     }));
-    console.log("showMore is", this.state.showMore);
   }
 
   render() {
@@ -97,6 +97,23 @@ export default class Search extends React.Component {
             toggleShow={this.toggleShow}
             more={this.state.showMore}
           />
+          <ul className="list-group">
+            {this.state.showMore &&
+              this.state.results.map((result) => {
+                if (result.popularity <= 20) {
+                  return (
+                    <SearchResult
+                      key={result.spotify_id}
+                      artist={result}
+                      updateArtist={this.props.updateArtist}
+                      updateTracks={this.props.updateTracks}
+                      clearArtistSearch={this.clearResults}
+                      setLoading={this.props.setLoading}
+                    />
+                  );
+                }
+              })}
+          </ul>
         </div>
       </div>
     );
