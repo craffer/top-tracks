@@ -19,9 +19,9 @@ export default class Tracks extends React.Component {
               src={track.album.images[1].url}
             />
           </a>
-          <h1 className="mr-2 mr-md-3 mobile-header">{index + 1}.</h1>
+          <h1 className="mr-2 mr-md-3 ranking">{index + 1}.</h1>
           <div>
-            <h4 className="song-name">
+            <h4 className="song-name mb-0 mb-md-2">
               <a className="text-dark" href={track.external_url}>
                 {track.name}
               </a>
@@ -35,7 +35,7 @@ export default class Tracks extends React.Component {
                 }
                 return (
                   <a
-                    className="text-muted"
+                    className="text-muted album-artist"
                     key={res.spotify_id}
                     href={res.external_url}
                   >
@@ -44,13 +44,16 @@ export default class Tracks extends React.Component {
                 );
               })}{" "}
               –{" "}
-              <a className="text-muted" href={track.album.external_url}>
+              <a
+                className="text-muted album-artist"
+                href={track.album.external_url}
+              >
                 {track.album.name}
               </a>
             </div>
           </div>
           <div className="ml-auto">
-            <h2>{track.popularity}</h2>
+            <h2 className="score">{track.popularity}</h2>
           </div>
         </li>
       );

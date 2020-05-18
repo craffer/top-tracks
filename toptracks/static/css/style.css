@@ -4,12 +4,16 @@
     object-fit: cover;
 }
 
-.mobile-header {
-    font-size: 2rem;
+.ranking {
+    font-size: 1.7rem;
+}
+
+.score {
+    font-size: 1.5rem;
 }
 
 .song-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 /* all devices except mobile, increase size of image view */
@@ -19,8 +23,12 @@
         width: 100px;
     }
 
-    .mobile-header {
+    .ranking {
         font-size: 2.5rem;
+    }
+
+    .score {
+        font-size: 2rem;
     }
 
     .song-name {
