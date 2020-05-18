@@ -56,7 +56,7 @@ export default class Search extends React.Component {
           ></input>
           <div className="input-group-append">
             <button
-              className="btn btn-secondary"
+              className="btn btn-outline-light"
               type="button"
               onClick={this.search}
             >
