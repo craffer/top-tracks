@@ -9,6 +9,9 @@ def search(search_term=""):
     """Query Spotify for an artist."""
     context = {}
     user_query = f'"{search_term}"' if search_term else flask.request.args.get("q")
+    if not user_query:
+        return flask.jsonify(**context), 404
+
     resp = toptracks.sp.search(user_query, type="artist")
 
     print(resp["artists"]["items"])
