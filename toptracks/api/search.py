@@ -14,8 +14,6 @@ def search(search_term=""):
 
     resp = toptracks.sp.search(user_query, type="artist")
 
-    print(resp["artists"]["items"])
-
     context["artists"] = []
     for artist in resp["artists"]["items"]:
         info = {}
