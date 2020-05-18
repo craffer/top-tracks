@@ -23,6 +23,7 @@ def search(search_term=""):
         info["spotify_id"] = artist["id"]
         info["images"] = artist["images"]
         info["name"] = artist["name"]
+        info["popularity"] = artist["popularity"]
 
         context["artists"].append(info)
 
