@@ -47,6 +47,7 @@ export default class Search extends React.Component {
             <input
               className="form-control searchbar p-2"
               type="text"
+              name="search"
               placeholder="Search for an artist"
               value={this.state.query}
               onChange={(event) => this.setState({ query: event.target.value })}
