@@ -43,8 +43,8 @@ small {
 /* all devices except mobile, increase size of image view */
 @media (min-width: 768px) {
     .album-art {
-        height: 100px;
-        width: 100px;
+        height: 90px;
+        width: 90px;
     }
 
     .ranking {
