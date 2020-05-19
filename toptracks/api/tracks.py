@@ -59,6 +59,7 @@ def get_tracks():
                 artist_info["name"] = artist["name"]
                 track_resp["artists"].append(artist_info)
 
+            track_resp["explicit"] = track["explicit"]
             track_resp["external_url"] = track["external_urls"]["spotify"]
             track_resp["spotify_id"] = track["id"]
             track_resp["name"] = track["name"]
