@@ -8,7 +8,9 @@ export default class Tracks extends React.Component {
   render() {
     let resultsDivs = [];
     this.props.tracks.forEach((track, index) => {
-      resultsDivs.push(<Track track={track} ranking={index + 1} />);
+      resultsDivs.push(
+        <Track key={track.spotify_id} track={track} ranking={index + 1} />
+      );
     });
     return <ul className="list-group mb-4">{resultsDivs}</ul>;
   }
