@@ -26,7 +26,7 @@ class Track extends React.Component {
     return (
       <li
         key={track.spotify_id}
-        className="list-group-item d-flex align-items-center w-100"
+        className="list-group-item d-flex align-items-center w-100 p-2 px-md-4 py-md-3"
       >
         <a href={track.external_url} target="_blank">
           <img
