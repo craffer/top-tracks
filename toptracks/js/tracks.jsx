@@ -41,6 +41,12 @@ class Track extends React.Component {
               {track.name}
             </a>
           </h4>
+          {track.explicit && (
+            <img
+              className="explicit"
+              src="https://img.icons8.com/all/500/explicit.png"
+            />
+          )}
           <div className="text-muted text-nowrap w-100 overflow-text">
             {track.artists.map((res, index, arr) => {
               // for the last element, we don't want a comma and space after
