@@ -20,15 +20,24 @@ body {
 }
 
 .ranking {
-    font-size: 1.7rem;
+    font-size: 1.25rem;
 }
 
 .score {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .song-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
+}
+
+.album-artist {
+    font-size: 0.75rem;
+}
+
+small {
+    font-size: x-small;
+}
 }
 
 /* all devices except mobile, increase size of image view */
@@ -48,6 +57,14 @@ body {
 
     .song-name {
         font-size: 1.5rem;
+    }
+
+    .album-artist {
+        font-size: 1rem;
+    }
+
+    small {
+        font-size: smaller;
     }
 }
 
