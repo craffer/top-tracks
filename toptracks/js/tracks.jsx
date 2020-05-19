@@ -35,7 +35,7 @@ class Track extends React.Component {
           />
         </a>
         <h1 className="mr-2 mr-md-3 ranking">{this.props.ranking}.</h1>
-        <div className="col-7 px-0">
+        <div className={`${this.props.ranking < 100 ? "w-65" : "w-61"} px-0`}>
           <h4 className="song-name mb-0 mb-md-2 text-nowrap w-100 overflow-text">
             <a className="text-dark" href={track.external_url} target="_blank">
               {track.name}

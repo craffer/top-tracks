@@ -38,6 +38,13 @@ body {
 small {
     font-size: x-small;
 }
+
+.w-65 {
+    max-width: 65%;
+}
+
+.w-61 {
+    max-width: 61%;
 }
 
 /* all devices except mobile, increase size of image view */
