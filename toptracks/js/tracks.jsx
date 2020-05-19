@@ -59,7 +59,7 @@ class Track extends React.Component {
                 </a>
               );
             })}{" "}
-            &bull;
+            &middot;{" "}
             <a
               className="text-muted album-artist"
               href={track.album.external_url}
