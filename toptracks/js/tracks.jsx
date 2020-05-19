@@ -36,11 +36,23 @@ class Track extends React.Component {
         </a>
         <h1 className="mr-2 mr-md-3 ranking">{this.props.ranking}.</h1>
         <div className={`${this.props.ranking < 100 ? "w-65" : "w-61"} px-0`}>
-          <h4 className="song-name mb-0 mb-md-2 text-nowrap w-100 overflow-text">
-            <a className="text-dark" href={track.external_url} target="_blank">
-              {track.name}
-            </a>
-          </h4>
+          <div className="d-flex flex-row align-items-center w-100 text-nowrap overflow-text">
+            <h4 className="song-name my-0 my-md-2 overflow-text">
+              <a
+                className="text-dark"
+                href={track.external_url}
+                target="_blank"
+              >
+                {track.name}
+              </a>
+            </h4>
+            {track.explicit && (
+              <img
+                className="explicit ml-1"
+                src="https://img.icons8.com/all/500/explicit.png"
+              />
+            )}
+          </div>
           <div className="text-muted text-nowrap w-100 overflow-text">
             {track.artists.map((res, index, arr) => {
               // for the last element, we don't want a comma and space after
