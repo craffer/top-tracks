@@ -14,28 +14,48 @@ body {
 }
 
 .album-art {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     object-fit: cover;
 }
 
 .ranking {
-    font-size: 1.7rem;
+    font-size: 1.25rem;
 }
 
 .score {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .song-name {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+}
+
+.album-artist {
+    font-size: 0.75rem;
+}
+
+small {
+    font-size: x-small;
+}
+
+.artist-search {
+    font-size: 1.2rem;
+}
+
+.w-65 {
+    max-width: 65%;
+}
+
+.w-61 {
+    max-width: 61%;
 }
 
 /* all devices except mobile, increase size of image view */
 @media (min-width: 768px) {
     .album-art {
-        height: 100px;
-        width: 100px;
+        height: 90px;
+        width: 90px;
     }
 
     .ranking {
@@ -49,6 +69,23 @@ body {
     .song-name {
         font-size: 1.5rem;
     }
+
+    .album-artist {
+        font-size: 1rem;
+    }
+
+    small {
+        font-size: smaller;
+    }
+
+    .artist-search {
+        font-size: 1.5rem;
+    }
+}
+
+.overflow-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 i {

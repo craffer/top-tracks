@@ -36,18 +36,18 @@ export default class SearchResult extends React.Component {
   render() {
     return (
       <a
-        className="list-group-item list-group-item-action d-flex align-items-center"
+        className="list-group-item list-group-item-action d-flex align-items-center p-2 px-md-4 py-md-3"
         onClick={this.handleClick}
       >
         <img
-          className="album-art mr-3 shadow-sm"
+          className="album-art mr-2 mr-md-3 shadow-sm"
           src={
             this.props.artist.images.length > 0
               ? this.props.artist.images[0].url
               : ""
           }
         />
-        <h4>{this.props.artist.name}</h4>
+        <h4 className="artist-search">{this.props.artist.name}</h4>
       </a>
     );
   }
