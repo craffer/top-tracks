@@ -39,6 +39,10 @@ small {
     font-size: x-small;
 }
 
+.artist-search {
+    font-size: 1.2rem;
+}
+
 .w-65 {
     max-width: 65%;
 }
@@ -72,6 +76,10 @@ small {
 
     small {
         font-size: smaller;
+    }
+
+    .artist-search {
+        font-size: 1.5rem;
     }
 }
 

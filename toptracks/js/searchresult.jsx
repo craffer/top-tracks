@@ -47,7 +47,7 @@ export default class SearchResult extends React.Component {
               : ""
           }
         />
-        <h4>{this.props.artist.name}</h4>
+        <h4 className="artist-search">{this.props.artist.name}</h4>
       </a>
     );
   }
