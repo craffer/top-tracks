@@ -51,6 +51,29 @@ body {
     }
 }
 
+.scroll-text {
+    overflow: hidden;
+    position: relative;
+}
+
+.scroll-text * {
+    white-space: pre;
+    position: relative;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        left: 0;
+        transform: translateX(0);
+    }
+
+    100% {
+        left: -100%;
+        transform: translateX(-100%);
+    }
+}
+
 i {
     font-size: 22px;
 }
