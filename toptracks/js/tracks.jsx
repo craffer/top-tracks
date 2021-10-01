@@ -49,7 +49,7 @@ class Track extends React.Component {
             {track.explicit && (
               <img
                 className="explicit ml-1"
-                src="https://img.icons8.com/all/500/explicit.png"
+                src="https://img.icons8.com/ios/50/000000/explicit.png"
               />
             )}
           </div>
